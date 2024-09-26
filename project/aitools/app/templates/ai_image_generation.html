@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>AI Image Generation</h2>
+
+    <!-- Form Section -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="generated_image" class="form-label">Upload Generated Image</label>
+            <input class="form-control" type="file" id="generated_image" name="generated_image">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Display Generated Images in Card Layout -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">AI Image Gallery</h2>
+    
+        <!-- Display Generated Images in a Gallery Section -->
+        <div class="row">
+            {% for image in images %}
+            <div class="col-md-4 mb-4">
+                <div class="card image-card">
+                    <div class="card-img-container">
+                        <!-- Render the Uploaded Image with Hover Effect -->
+                        <img src="{{ image.generated_image.url }}" class="card-img-top img-fluid" alt="Generated Image">
+                    </div>
+                    <div class="card-body">
+                        <!-- Render the Description -->
+                        <h5 class="card-title">Description</h5>
+                        <p class="card-text">{{ image.description }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">Generated on: {{ image.created_at }}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

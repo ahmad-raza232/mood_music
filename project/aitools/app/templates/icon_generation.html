@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Icon Generation</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="icon_description" class="form-label">Icon Description</label>
+      <textarea class="form-control" id="icon_description" name="icon_description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="generated_icon" class="form-label">Upload Generated Icon</label>
+      <input class="form-control" type="file" id="generated_icon" name="generated_icon">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

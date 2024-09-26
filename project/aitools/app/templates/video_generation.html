@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Video Generation</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="video_content" class="form-label">Video Content</label>
+      <textarea class="form-control" id="video_content" name="video_content" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="generated_video" class="form-label">Upload Generated Video</label>
+      <input class="form-control" type="file" id="generated_video" name="generated_video">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

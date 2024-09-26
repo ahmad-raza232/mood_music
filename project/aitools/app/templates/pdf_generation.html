@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>PDF Generation</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="content" class="form-label">PDF Content</label>
+      <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="generated_pdf" class="form-label">Upload Generated PDF</label>
+      <input class="form-control" type="file" id="generated_pdf" name="generated_pdf">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
